@@ -1,4 +1,4 @@
-import seed from '../my-static-api/db.json';
+import seed from './Data/db.json';
 
 const KEY = 'yashi-blog-demo-v1';
 function read() {
