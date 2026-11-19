@@ -1,24 +1,39 @@
-import logo from './logo.svg';
 import './App.css';
+import { HashRouter, Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
+import Viewblog from './Component/Viewblog';
+import Addblog from './Component/Addblog';
+import Editblog from './Component/Editblog';
+import { Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import { Provider } from 'react-redux';
+import Store from './Redux/Store';
+import Home from './Component/Home';
+import Bloglist from './Component/Bloglist';
+import 'font-awesome/css/font-awesome.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={Store}>
+
+    <div className='App'>
+    <aside role="note" style={{padding: '10px', background: '#fff4cc', color: '#333'}}>Demo: posts and likes are saved only in this browser.</aside>
+    <HashRouter>
+   
+    <Routes>
+    <Route path='/' element={<Home></Home>}> </Route>
+    <Route path='/blog' element={<Bloglist></Bloglist>}> </Route>
+    <Route path='/blog/view/:code' element={<Viewblog></Viewblog>}></Route>
+    <Route path='/blog/add' element={<Addblog></Addblog>}></Route>
+    <Route path='/blog/edit/:code' element={<Editblog></Editblog>}></Route>
+
+    </Routes>
+    </HashRouter>
+    <ToastContainer ></ToastContainer>  
+     </div>
+   </Provider>
   );
 }
 
